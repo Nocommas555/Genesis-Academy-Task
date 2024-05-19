@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./serv
+    ports:
+      - "8000:8080"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/prod
+    command: ./server
+    
+  db:
+    build: ./db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=prod
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+      
+volumes:
+  postgres-db:

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo $(ls -a)
+# Start the first process
+
+echo $(docker-entrypoint.sh)
+
+echo $(psql -U postgres)
+# Start the second process
+echo $(server)
+
+
+wait -n
+# Exit with status of process that exited first
+exit $?

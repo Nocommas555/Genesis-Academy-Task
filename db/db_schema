@@ -1,0 +1,15 @@
+-- Table: public.mailing_list_subcribers
+
+-- DROP TABLE IF EXISTS public.mailing_list_subcribers;
+
+CREATE TABLE IF NOT EXISTS public.mailing_list_subcribers
+(
+    id integer NOT NULL DEFAULT nextval('mailing_list_subcribers_id_seq'::regclass),
+    email character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT mailing_list_subcribers_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.mailing_list_subcribers
+    OWNER to postgres;
